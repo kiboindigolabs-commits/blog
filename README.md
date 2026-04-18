@@ -1,1 +1,1 @@
-# running-blog
+blog
