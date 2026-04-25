@@ -1,0 +1,280 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: reslabo.jp AI自動ブログ生成システム
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 300
+    MemorySize: 512
+    Environment:
+      Variables:
+        S3_BUCKET: !Ref ArticleBucket
+        WP_URL: https://reslabo.jp
+        GENRE: AI tools and services
+
+Parameters:
+  Environment:
+    Type: String
+    Default: prod
+
+Resources:
+
+  # ─── S3 ───────────────────────────────────────────────
+  ArticleBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "ai-site-articles-${AWS::AccountId}"
+      LifecycleConfiguration:
+        Rules:
+          - Id: DeleteRaw
+            Prefix: raw/
+            Status: Enabled
+            ExpirationInDays: 30
+          - Id: GlacierPublished
+            Prefix: published/
+            Status: Enabled
+            Transitions:
+              - TransitionInDays: 90
+                StorageClass: GLACIER
+
+  # ─── IAM Role ─────────────────────────────────────────
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: ai-site-lambda-role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: ai-site-policy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:PutObject
+                  - s3:DeleteObject
+                Resource: !Sub "${ArticleBucket.Arn}/*"
+              - Effect: Allow
+                Action:
+                  - ssm:GetParameter
+                Resource:
+                  - !Sub "arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/ai-site/*"
+              - Effect: Allow
+                Action:
+                  - sns:Publish
+                Resource: !Ref AlertTopic
+
+  # ─── SNS ──────────────────────────────────────────────
+  AlertTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: ai-site-alerts
+
+  # ─── Lambda Functions ──────────────────────────────────
+  ScraperFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ai-site-scraper
+      CodeUri: mnt/user-data/outputs/ai-site-agent/lambdas/scraper/
+      Handler: lambda_function.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Environment:
+        Variables:
+          SNS_TOPIC_ARN: !Ref AlertTopic
+
+  EditorAIFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ai-site-editor-ai
+      CodeUri: mnt/user-data/outputs/ai-site-agent/lambdas/editor_ai/
+      Handler: lambda_function.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 600
+      Environment:
+        Variables:
+          CLAUDE_MODEL: claude-sonnet-4-6
+
+  WriterAIFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ai-site-writer-ai
+      CodeUri: mnt/user-data/outputs/ai-site-agent/lambdas/writer_ai/
+      Handler: lambda_function.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 600
+      Environment:
+        Variables:
+          CLAUDE_MODEL: claude-sonnet-4-6
+
+  ValidatorAIFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ai-site-validator-ai
+      CodeUri: mnt/user-data/outputs/ai-site-agent/lambdas/validator_ai/
+      Handler: lambda_function.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 300
+      Environment:
+        Variables:
+          CLAUDE_MODEL: claude-haiku-4-5-20251001
+          PASS_THRESHOLD: "0.85"
+          MAX_RETRIES: "3"
+
+  WPPublisherFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ai-site-wp-publisher
+      CodeUri: mnt/user-data/outputs/ai-site-agent/lambdas/wp_publisher/
+      Handler: lambda_function.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Environment:
+        Variables:
+          SNS_TOPIC_ARN: !Ref AlertTopic
+
+  # ─── Step Functions ────────────────────────────────────
+  StateMachineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: states.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: invoke-lambdas
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: lambda:InvokeFunction
+                Resource:
+                  - !GetAtt ScraperFunction.Arn
+                  - !GetAtt EditorAIFunction.Arn
+                  - !GetAtt WriterAIFunction.Arn
+                  - !GetAtt ValidatorAIFunction.Arn
+                  - !GetAtt WPPublisherFunction.Arn
+
+  BlogPipelineStateMachine:
+    Type: AWS::StepFunctions::StateMachine
+    Properties:
+      StateMachineName: ai-site-blog-pipeline
+      RoleArn: !GetAtt StateMachineRole.Arn
+      DefinitionString: !Sub |
+        {
+          "Comment": "AI Blog Pipeline",
+          "StartAt": "Scraper",
+          "States": {
+            "Scraper": {
+              "Type": "Task",
+              "Resource": "${ScraperFunction.Arn}",
+              "Next": "EditorAI",
+              "Catch": [{"ErrorEquals": ["States.ALL"], "Next": "PipelineError"}]
+            },
+            "EditorAI": {
+              "Type": "Task",
+              "Resource": "${EditorAIFunction.Arn}",
+              "Next": "WriterAI",
+              "Catch": [{"ErrorEquals": ["States.ALL"], "Next": "PipelineError"}]
+            },
+            "WriterAI": {
+              "Type": "Task",
+              "Resource": "${WriterAIFunction.Arn}",
+              "Next": "ValidatorAI",
+              "Catch": [{"ErrorEquals": ["States.ALL"], "Next": "PipelineError"}]
+            },
+            "ValidatorAI": {
+              "Type": "Task",
+              "Resource": "${ValidatorAIFunction.Arn}",
+              "Next": "CheckValidation",
+              "Catch": [{"ErrorEquals": ["States.ALL"], "Next": "PipelineError"}]
+            },
+            "CheckValidation": {
+              "Type": "Choice",
+              "Choices": [
+                {
+                  "Variable": "$.validation_result",
+                  "StringEquals": "PASS",
+                  "Next": "WPPublisher"
+                },
+                {
+                  "Variable": "$.validation_result",
+                  "StringEquals": "RETRY",
+                  "Next": "WriterAI"
+                },
+                {
+                  "Variable": "$.validation_result",
+                  "StringEquals": "MANUAL_REVIEW",
+                  "Next": "ManualReview"
+                }
+              ]
+            },
+            "WPPublisher": {
+              "Type": "Task",
+              "Resource": "${WPPublisherFunction.Arn}",
+              "End": true,
+              "Catch": [{"ErrorEquals": ["States.ALL"], "Next": "PipelineError"}]
+            },
+            "ManualReview": {
+              "Type": "Succeed"
+            },
+            "PipelineError": {
+              "Type": "Fail",
+              "Error": "PipelineError",
+              "Cause": "Lambda function failed"
+            }
+          }
+        }
+
+  # ─── EventBridge (毎日6:00 JST = 21:00 UTC) ───────────
+  DailyScheduleRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: scheduler.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: start-execution
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: states:StartExecution
+                Resource: !Ref BlogPipelineStateMachine
+
+  DailySchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      Name: ai-site-daily-trigger
+      ScheduleExpression: "cron(0 21 * * ? *)"
+      FlexibleTimeWindow:
+        Mode: "OFF"
+      Target:
+        Arn: !Ref BlogPipelineStateMachine
+        RoleArn: !GetAtt DailyScheduleRole.Arn
+        Input: "{}"
+
+Outputs:
+  StateMachineArn:
+    Value: !Ref BlogPipelineStateMachine
+    Description: Step Functions State Machine ARN
+  BucketName:
+    Value: !Ref ArticleBucket
+    Description: S3 Bucket Name
+  AlertTopicArn:
+    Value: !Ref AlertTopic
+    Description: SNS Alert Topic ARN
