@@ -8,8 +8,10 @@
 
 ### アーキテクチャ
 ```
-Obsidian (C:\obsidian-vault または C:\projects\blog)
-  ↓ Obsidian Git プラグインで自動同期
+Obsidian (C:\obsidian-vault\blog\posts\) ← ここで記事を書く
+  ↓ sync-posts.ps1 を実行
+C:\projects\blog\content\posts\ へコピー
+  ↓ git push
 GitHub (kiboindigolabs-commits/blog)
   ↓ GitHub Actions (mainブランチへのpushで起動)
 Hugo でビルド
@@ -17,13 +19,22 @@ Hugo でビルド
 Cloudflare Pages (無料ホスティング)
 ```
 
+### パス構成
+| 用途 | パス |
+|------|------|
+| Obsidian Vault | `C:\obsidian-vault` (junction → `G:\マイドライブ\obsidian`) |
+| 記事を書く場所 | `C:\obsidian-vault\blog\posts\` |
+| Gitリポジトリ | `C:\projects\blog` (junction → `G:\マイドライブ\cursor\blog`) |
+| 同期スクリプト | `C:\projects\blog\scripts\sync-posts.ps1` |
+
 ### リポジトリ構成
 ```
 blog/
 ├── .github/workflows/deploy.yml   # 自動デプロイ
 ├── archetypes/default.md          # Hugo記事テンプレート
-├── content/posts/                 # ← ここに記事を書く
+├── content/posts/                 # 同期先（直接編集しない）
 ├── templates/新規記事.md           # Obsidianテンプレート
+├── scripts/sync-posts.ps1         # ← 公開するときに実行するスクリプト
 ├── static/                        # 画像などの静的ファイル
 ├── themes/PaperMod/               # テーマ（要セットアップ）
 ├── hugo.toml                      # Hugo設定
@@ -62,20 +73,43 @@ git submodule update --init --recursive
    - `CLOUDFLARE_ACCOUNT_ID`
 
 ### 4. Obsidian の設定
-1. Obsidianでボルトとして `C:\projects\blog` を開く
-2. プラグイン → コミュニティプラグイン → **Obsidian Git** をインストール
-3. Obsidian Git 設定:
-   - Auto pull interval: 5分
-   - Auto push interval: 5分（または手動）
-4. テンプレート設定:
-   - 設定 → テンプレート → テンプレートフォルダの場所: `templates`
+1. Obsidianのボルトは `C:\obsidian-vault` を使用（変更不要）
+2. 記事は `C:\obsidian-vault\blog\posts\` フォルダに書く
+3. テンプレート設定:
+   - 設定 → テンプレート → テンプレートフォルダの場所: `blog\posts` 内に配置するか、
+   - `C:\projects\blog\templates\新規記事.md` を参考にフロントマターをコピーして使う
 
-### 5. ローカルプレビュー
+### 5. 記事を公開するとき
+```powershell
+# PowerShell で実行（C:\projects\blog にいなくてもOK）
+C:\projects\blog\scripts\sync-posts.ps1
+```
+
+### 6. ローカルプレビュー
 ```powershell
 cd C:\projects\blog
 hugo server -D
 # http://localhost:1313 で確認
 ```
+
+## 記事の書き方
+
+### フロントマター（記事の先頭に必須）
+```yaml
+---
+title: "記事タイトル"
+date: 2026-05-01
+draft: false      # true のままだと公開されない
+tags: ["タグ1", "タグ2"]
+categories: ["カテゴリ"]
+description: "記事の説明"
+---
+```
+
+### 注意点
+- `draft: true` のままではデプロイしても公開されない → 公開時は `draft: false` に変更
+- 記事ファイル名は英数字推奨（例: `2026-05-01-my-post.md`）
+- 画像は `C:\projects\blog\static\images\` に置いて `![説明](/images/ファイル名)` で参照
 
 ## Windowsパス問題の解決（済み）
 
