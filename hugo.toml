@@ -1,0 +1,49 @@
+baseURL = "https://your-blog.pages.dev"
+languageCode = "ja"
+defaultContentLanguage = "ja"
+title = "My Blog"
+theme = "PaperMod"
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowShareButtons = false
+  ShowToc = true
+  TocOpen = false
+  dateFormat = "2006-01-02"
+  description = "ブログの説明をここに書いてください"
+
+  [params.homeInfoParams]
+    Title = "ようこそ"
+    Content = "このブログへようこそ。"
+
+[menu]
+  [[menu.main]]
+    name = "記事一覧"
+    url = "/posts/"
+    weight = 1
+  [[menu.main]]
+    name = "タグ"
+    url = "/tags/"
+    weight = 2
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github"
+    lineNos = false

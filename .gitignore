@@ -1,0 +1,17 @@
+# Hugo build output
+public/
+resources/_gen/
+.hugo_build.lock
+
+# Obsidian workspace (ユーザー固有設定は除外)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/plugins/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
