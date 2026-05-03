@@ -49,21 +49,25 @@ blog/
 
 ## セットアップ手順（ユーザーが実行すること）
 
-### 1. Hugo のインストール（Windows）
+### 1. Hugo のインストール（Windows）✅ 完了
 ```powershell
 winget install Hugo.Hugo.Extended
 ```
 
-### 2. PaperMod テーマを追加
+### 2. PaperMod テーマを追加 ✅ 完了
 ```powershell
 cd C:\projects\blog
 git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 git submodule update --init --recursive
 ```
 
-### 3. Cloudflare Pages の設定
-1. https://pages.cloudflare.com/ でプロジェクト作成
-2. GitHubリポジトリ `kiboindigolabs-commits/blog` を連携
+### 3. Cloudflare Pages の設定 ← 次はここから
+**現在地**: Cloudflare の画面で Workers ページが表示された状態
+**次の操作**: 画面下部の「Pages のデプロイをお考えですか？さあ始めましょう」をクリック
+
+手順:
+1. 「GitHubに接続」をクリック
+2. GitHubリポジトリ `kiboindigolabs-commits/blog` を選択
 3. ビルド設定:
    - フレームワーク: Hugo
    - ビルドコマンド: `hugo --minify`
