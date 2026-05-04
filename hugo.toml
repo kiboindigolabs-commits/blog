@@ -16,7 +16,7 @@ buildFuture = false
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
-  ShowShareButtons = false
+  ShowShareButtons = true
   ShowToc = true
   TocOpen = false
   dateFormat = "2006-01-02"
@@ -32,9 +32,13 @@ buildFuture = false
     url = "/posts/"
     weight = 1
   [[menu.main]]
+    name = "AIツール紹介"
+    url = "/categories/aiツール紹介/"
+    weight = 2
+  [[menu.main]]
     name = "タグ"
     url = "/tags/"
-    weight = 2
+    weight = 3
 
 [taxonomies]
   tag = "tags"
