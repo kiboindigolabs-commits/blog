@@ -30,16 +30,57 @@ Cloudflare Pages (無料ホスティング)
 ### リポジトリ構成
 ```
 blog/
-├── .github/workflows/deploy.yml   # 自動デプロイ
-├── archetypes/default.md          # Hugo記事テンプレート
-├── content/posts/                 # 同期先（直接編集しない）
-├── templates/新規記事.md           # Obsidianテンプレート
-├── scripts/sync-posts.ps1         # ← 公開するときに実行するスクリプト
-├── static/                        # 画像などの静的ファイル
-├── themes/PaperMod/               # テーマ（要セットアップ）
-├── hugo.toml                      # Hugo設定
-└── CLAUDE.md                      # このファイル
+├── .github/workflows/deploy.yml      # 自動デプロイ
+├── archetypes/default.md             # Hugo記事テンプレート
+├── assets/css/extended/custom.css   # アフィリエイト向けカスタムCSS ✅
+├── content/posts/                    # 同期先（直接編集しない）
+├── layouts/shortcodes/               # ショートコード ✅
+│   ├── btn.html                      # アフィリエイトボタン
+│   ├── box.html                      # コンテンツボックス
+│   ├── card.html                     # 商品カード
+│   └── ranking.html                  # ランキング表示
+├── templates/新規記事.md              # Obsidianテンプレート
+├── scripts/sync-posts.ps1            # ← 公開するときに実行するスクリプト
+├── static/                           # 画像などの静的ファイル
+├── themes/PaperMod/                  # テーマ（セットアップ済み）✅
+├── hugo.toml                         # Hugo設定
+└── CLAUDE.md                         # このファイル
 ```
+
+## アフィリエイト向けショートコード ✅ 完了
+
+### ① アフィリエイトボタン
+```
+{{</* btn url="https://..." text="無料で試す" color="orange" */>}}
+```
+color: `orange` / `amazon` / `blue` / `green` / `red` / `purple`
+
+### ② 商品カード
+```
+{{</* card name="ツール名" stars="5" price="月額3,000円" url="https://..." */>}}
+特徴の説明文
+{{</* /card */>}}
+```
+
+### ③ コンテンツボックス
+```
+{{</* box type="good" title="タイトル" */>}}
+内容
+{{</* /box */>}}
+```
+type: `info`💡 / `warn`⚠️ / `good`✅ / `bad`❌ / `point`📌 / `memo`📝
+
+### ④ ランキング
+```
+{{</* ranking rank="1" name="ツール名" stars="5" url="https://..." */>}}
+説明文
+{{</* /ranking */>}}
+```
+
+## 次の実装予定
+
+- [ ] AI記事自動生成パイプライン（キーワード入力 → Claude API → Obsidian下書き保存）
+- [ ] アフィリエイト: もしもアフィリエイト（初心者向けで最もおすすめ）
 
 ### 使用技術
 - **エディタ**: Obsidian
