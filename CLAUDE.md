@@ -61,20 +61,10 @@ git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git t
 git submodule update --init --recursive
 ```
 
-### 3. Cloudflare Pages の設定 ← 次はここから
-**現在地**: Cloudflare の画面で Workers ページが表示された状態
-**次の操作**: 画面下部の「Pages のデプロイをお考えですか？さあ始めましょう」をクリック
-
-手順:
-1. 「GitHubに接続」をクリック
-2. GitHubリポジトリ `kiboindigolabs-commits/blog` を選択
-3. ビルド設定:
-   - フレームワーク: Hugo
-   - ビルドコマンド: `hugo --minify`
-   - 出力ディレクトリ: `public`
-4. GitHub Secrets に追加:
-   - `CLOUDFLARE_API_TOKEN`
-   - `CLOUDFLARE_ACCOUNT_ID`
+### 3. Cloudflare Pages の設定 ✅ 完了
+- デプロイURL: `https://blog-19g.pages.dev`
+- GitHubリポジトリ `kiboindigolabs-commits/blog` の main ブランチに連携済み
+- ビルドコマンド: `hugo --minify` / 出力: `public`
 
 ### 4. Obsidian の設定
 1. Obsidianのボルトは `C:\obsidian-vault` を使用（変更不要）
