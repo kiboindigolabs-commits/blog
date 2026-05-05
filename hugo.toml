@@ -29,10 +29,9 @@ buildFuture = false
     Title = "AIツールをもっと身近に"
     Content = "最新のAIツール情報、使い方、おすすめを初心者にもわかりやすく紹介します。"
 
-  [params.socialIcons]
-    [[params.socialIcons]]
-      name = "twitter"
-      url  = "https://twitter.com/"
+  [[params.socialIcons]]
+    name = "twitter"
+    url  = "https://twitter.com/"
 
 [menu]
   [[menu.main]]
