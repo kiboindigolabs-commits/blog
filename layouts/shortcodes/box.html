@@ -1,0 +1,11 @@
+{{ $type := .Get "type" | default "info" }}
+{{ $title := .Get "title" }}
+{{ $icons := dict "info" "💡" "warn" "⚠️" "good" "✅" "bad" "❌" "point" "📌" "memo" "📝" }}
+{{ $icon := .Get "icon" | default (index $icons $type) }}
+<div class="content-box content-box--{{ $type }}">
+  <div class="content-box__title">
+    {{ if $icon }}<span class="content-box__icon">{{ $icon }}</span>{{ end }}
+    {{ if $title }}{{ $title }}{{ end }}
+  </div>
+  <div class="content-box__body">{{ .Inner | markdownify }}</div>
+</div>

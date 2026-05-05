@@ -1,0 +1,10 @@
+{{ $url := .Get "url" }}
+{{ $text := .Get "text" | default "詳細を見る" }}
+{{ $color := .Get "color" | default "orange" }}
+{{ $icon := .Get "icon" | default "" }}
+<div class="affiliate-btn-wrapper">
+  <a href="{{ $url }}" class="affiliate-btn affiliate-btn--{{ $color }}" target="_blank" rel="nofollow noopener noreferrer">
+    {{ if $icon }}<span class="affiliate-btn__icon">{{ $icon }}</span>{{ end }}
+    {{ $text }}
+  </a>
+</div>

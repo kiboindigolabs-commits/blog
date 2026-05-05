@@ -1,0 +1,29 @@
+{{ $name := .Get "name" }}
+{{ $url := .Get "url" }}
+{{ $img := .Get "img" }}
+{{ $stars := int (.Get "stars" | default "4") }}
+{{ $price := .Get "price" }}
+{{ $btntext := .Get "btntext" | default "詳細を見る・購入する" }}
+{{ $empty := sub 5 $stars }}
+<div class="product-card">
+  {{ if $img }}
+  <div class="product-card__image">
+    <img src="{{ $img }}" alt="{{ $name }}" loading="lazy">
+  </div>
+  {{ end }}
+  <div class="product-card__body">
+    <h4 class="product-card__name">{{ $name }}</h4>
+    <div class="product-card__rating">
+      <span class="stars-full">{{ range seq $stars }}★{{ end }}</span>
+      {{ if gt $empty 0 }}<span class="stars-empty">{{ range seq $empty }}☆{{ end }}</span>{{ end }}
+      <span class="stars-score">{{ $stars }}/5</span>
+    </div>
+    {{ if $price }}<p class="product-card__price">{{ $price }}</p>{{ end }}
+    <div class="product-card__desc">{{ .Inner | markdownify }}</div>
+    {{ if $url }}
+    <a href="{{ $url }}" class="affiliate-btn affiliate-btn--amazon" target="_blank" rel="nofollow noopener noreferrer">
+      {{ $btntext }}
+    </a>
+    {{ end }}
+  </div>
+</div>

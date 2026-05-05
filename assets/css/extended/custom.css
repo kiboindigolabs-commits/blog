@@ -1,0 +1,445 @@
+/* =============================================
+   モダンブログ + アフィリエイト カスタムスタイル
+   ============================================= */
+
+/* ===== カラー・変数 ===== */
+:root {
+  --primary:       #6366f1;
+  --primary-dark:  #4f46e5;
+  --primary-light: #eef2ff;
+  --accent:        #f59e0b;
+  --text:          #111827;
+  --text-muted:    #6b7280;
+  --border:        #e5e7eb;
+  --bg-soft:       #f9fafb;
+  --radius:        14px;
+  --shadow-sm:     0 2px 8px rgba(0,0,0,0.07);
+  --shadow-md:     0 6px 20px rgba(0,0,0,0.11);
+  --shadow-lg:     0 12px 40px rgba(0,0,0,0.14);
+}
+
+/* ===== ベース ===== */
+body {
+  font-family: "Noto Sans JP", "Inter", -apple-system, sans-serif !important;
+  color: var(--text);
+  background: #f5f5f7;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.main { padding-top: 1.5rem; }
+
+/* ===== ヘッダー ===== */
+.header {
+  background: #fff !important;
+  border-bottom: 3px solid var(--primary) !important;
+  box-shadow: 0 2px 12px rgba(99,102,241,0.10) !important;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo a,
+.logo span {
+  font-family: "Inter", "Noto Sans JP", sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 1.3rem !important;
+  background: linear-gradient(135deg, var(--primary), #a855f7) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  letter-spacing: -0.02em;
+}
+
+#menu a {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: var(--text-muted) !important;
+  padding: 0.35rem 0.9rem !important;
+  border-radius: 8px !important;
+  transition: all 0.15s !important;
+  text-decoration: none !important;
+}
+
+#menu a:hover {
+  background: var(--primary-light) !important;
+  color: var(--primary) !important;
+}
+
+/* ===== ホームページ ヒーロー ===== */
+.first-entry.home-info,
+article.home-info {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 60%, #a855f7 100%) !important;
+  border-radius: var(--radius) !important;
+  padding: 3.5rem 2.5rem !important;
+  margin-bottom: 2rem !important;
+  border: none !important;
+  box-shadow: 0 8px 32px rgba(79,70,229,0.30) !important;
+}
+
+.first-entry.home-info .entry-header h1,
+article.home-info .entry-header h1 {
+  color: #fff !important;
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.6rem;
+}
+
+.first-entry.home-info .entry-content p,
+article.home-info .entry-content p {
+  color: rgba(255,255,255,0.88) !important;
+  font-size: 1rem !important;
+}
+
+/* ===== 記事カード ===== */
+.post-entry {
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-top: 4px solid var(--primary) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease !important;
+  overflow: hidden !important;
+  margin-bottom: 1.4rem !important;
+}
+
+.post-entry:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: var(--shadow-md) !important;
+  border-top-color: #a855f7 !important;
+}
+
+.post-entry .entry-header h2 {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  line-height: 1.55 !important;
+  margin: 0.6rem 0 0.4rem !important;
+}
+
+.post-entry .entry-header h2 a {
+  color: var(--text) !important;
+  text-decoration: none !important;
+}
+
+.post-entry .entry-header h2 a:hover {
+  color: var(--primary) !important;
+}
+
+.post-entry .entry-content {
+  font-size: 0.875rem !important;
+  color: var(--text-muted) !important;
+  line-height: 1.65 !important;
+}
+
+.post-entry .entry-footer {
+  font-size: 0.78rem !important;
+  color: #9ca3af !important;
+}
+
+/* カバー画像のホバー効果 */
+.entry-cover {
+  overflow: hidden;
+}
+
+.entry-cover img {
+  transition: transform 0.35s ease !important;
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover !important;
+}
+
+.post-entry:hover .entry-cover img {
+  transform: scale(1.05) !important;
+}
+
+/* ===== 記事本文ページ ===== */
+.post-single {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 2rem;
+}
+
+.post-title {
+  font-family: "Noto Sans JP", sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 1.75rem !important;
+  line-height: 1.45 !important;
+  color: var(--text) !important;
+  letter-spacing: -0.01em;
+}
+
+/* h2 見出し */
+.post-content h2 {
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  margin-top: 2.5rem !important;
+  margin-bottom: 0.8rem !important;
+  padding: 0.6rem 1rem !important;
+  background: var(--primary-light) !important;
+  border-left: 5px solid var(--primary) !important;
+  border-radius: 0 8px 8px 0 !important;
+  color: var(--primary-dark) !important;
+}
+
+/* h3 見出し */
+.post-content h3 {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  margin-top: 1.8rem !important;
+  padding-left: 0.8rem !important;
+  border-left: 3px solid #a5b4fc !important;
+  color: var(--text) !important;
+}
+
+.post-content a {
+  color: var(--primary) !important;
+  text-decoration-color: #c7d2fe !important;
+  text-underline-offset: 2px;
+}
+
+.post-content a:hover {
+  color: var(--primary-dark) !important;
+}
+
+/* ===== タグ ===== */
+.post-tags a,
+.terms-tags a {
+  display: inline-block !important;
+  background: var(--primary-light) !important;
+  border: 1px solid #c7d2fe !important;
+  border-radius: 999px !important;
+  padding: 3px 13px !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  color: var(--primary-dark) !important;
+  text-decoration: none !important;
+  margin: 2px !important;
+  transition: all 0.15s !important;
+}
+
+.post-tags a:hover,
+.terms-tags a:hover {
+  background: var(--primary) !important;
+  color: #fff !important;
+  border-color: var(--primary) !important;
+}
+
+/* ===== TOC ===== */
+.toc {
+  background: var(--bg-soft) !important;
+  border: 1px solid #c7d2fe !important;
+  border-left: 4px solid var(--primary) !important;
+  border-radius: var(--radius) !important;
+  padding: 1rem 1.4rem !important;
+  margin: 1.5rem 0 !important;
+  font-size: 0.875rem !important;
+}
+
+.toc details summary {
+  font-weight: 700 !important;
+  color: var(--primary-dark) !important;
+  cursor: pointer;
+}
+
+/* ===== テーブル ===== */
+.post-content table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 1.5rem 0 !important;
+  font-size: 0.875rem !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.post-content th {
+  background: var(--primary) !important;
+  color: #fff !important;
+  padding: 0.65rem 0.9rem !important;
+  font-weight: 600 !important;
+}
+
+.post-content td {
+  padding: 0.6rem 0.9rem !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.post-content tr:last-child td { border-bottom: none !important; }
+.post-content tr:nth-child(even) td { background: var(--bg-soft) !important; }
+
+/* ===== フッター ===== */
+.footer {
+  background: #fff !important;
+  border-top: 1px solid var(--border) !important;
+  color: var(--text-muted) !important;
+  font-size: 0.82rem !important;
+  margin-top: 2rem;
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 768px) {
+  .post-title { font-size: 1.35rem !important; }
+  .post-content h2 { font-size: 1.05rem !important; }
+  .first-entry.home-info { padding: 2.5rem 1.5rem !important; }
+  .first-entry.home-info .entry-header h1 { font-size: 1.5rem !important; }
+}
+
+/* =============================================
+   アフィリエイト向けショートコード
+   ============================================= */
+
+/* ===== アフィリエイトボタン ===== */
+.affiliate-btn-wrapper {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.affiliate-btn {
+  display: inline-block;
+  padding: 0.9rem 2.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  letter-spacing: 0.02em;
+}
+
+.affiliate-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+}
+
+.affiliate-btn--orange  { background: linear-gradient(135deg, #f97316, #ea580c); }
+.affiliate-btn--amazon  { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.affiliate-btn--blue    { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.affiliate-btn--green   { background: linear-gradient(135deg, #22c55e, #16a34a); }
+.affiliate-btn--red     { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.affiliate-btn--purple  { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+
+/* ===== 商品カード ===== */
+.product-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  margin: 1.8rem 0;
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-start;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s;
+}
+
+.product-card:hover { box-shadow: var(--shadow-md); }
+.product-card__image { flex-shrink: 0; width: 130px; }
+.product-card__image img { width: 100%; border-radius: 8px; object-fit: cover; }
+.product-card__body { flex: 1; min-width: 0; }
+
+.product-card__name {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  margin: 0 0 0.4rem !important;
+  border: none !important;
+  padding: 0 !important;
+  background: none !important;
+  color: var(--text) !important;
+}
+
+.stars-full  { color: #f59e0b; }
+.stars-empty { color: #d1d5db; }
+.stars-score { color: var(--text-muted); font-size: 0.8rem; margin-left: 0.3rem; }
+
+.product-card__price {
+  font-weight: 700;
+  color: #ef4444;
+  font-size: 1rem;
+  margin: 0.3rem 0 0.7rem !important;
+}
+
+.product-card__desc { font-size: 0.875rem; margin-bottom: 1rem; }
+.product-card__desc p { margin: 0.2rem 0; }
+
+@media (max-width: 640px) {
+  .product-card { flex-direction: column; }
+  .product-card__image { width: 100%; max-width: 180px; margin: 0 auto; }
+}
+
+/* ===== コンテンツボックス ===== */
+.content-box {
+  border-radius: 10px;
+  padding: 1rem 1.4rem;
+  margin: 1.5rem 0;
+  border-left: 5px solid;
+}
+
+.content-box__title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.content-box__body { font-size: 0.9rem; }
+.content-box__body p:last-child { margin-bottom: 0; }
+
+.content-box--info  { background: #eff6ff; border-color: #3b82f6; }
+.content-box--warn  { background: #fffbeb; border-color: #f59e0b; }
+.content-box--good  { background: #f0fdf4; border-color: #22c55e; }
+.content-box--bad   { background: #fef2f2; border-color: #ef4444; }
+.content-box--point { background: #faf5ff; border-color: #a855f7; }
+.content-box--memo  { background: var(--bg-soft); border-color: #9ca3af; }
+
+/* ===== ランキング ===== */
+.ranking-item {
+  display: flex;
+  gap: 1.2rem;
+  padding: 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin: 1rem 0;
+  align-items: flex-start;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s;
+}
+
+.ranking-item:hover { box-shadow: var(--shadow-md); }
+
+.ranking-item__number {
+  background: #9ca3af;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1rem;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ranking-item__number--1 { background: linear-gradient(135deg, #f59e0b, #d97706); box-shadow: 0 2px 8px rgba(245,158,11,0.4); }
+.ranking-item__number--2 { background: linear-gradient(135deg, #94a3b8, #64748b); }
+.ranking-item__number--3 { background: linear-gradient(135deg, #b45309, #92400e); }
+
+.ranking-item__name {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  margin: 0 0 0.3rem !important;
+  border: none !important;
+  padding: 0 !important;
+  background: none !important;
+  color: var(--text) !important;
+}
+
+.ranking-item__desc { font-size: 0.875rem; margin-bottom: 0.8rem; color: #4b5563; }
+.ranking-item__desc p { margin: 0.2rem 0; }

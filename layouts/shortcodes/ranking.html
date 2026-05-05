@@ -1,0 +1,22 @@
+{{ $rank := .Get "rank" | default "1" }}
+{{ $name := .Get "name" }}
+{{ $url := .Get "url" }}
+{{ $stars := int (.Get "stars" | default "4") }}
+{{ $empty := sub 5 $stars }}
+{{ $btntext := .Get "btntext" | default "詳細を見る" }}
+<div class="ranking-item">
+  <div class="ranking-item__number ranking-item__number--{{ $rank }}">{{ $rank }}</div>
+  <div class="ranking-item__body">
+    <h4 class="ranking-item__name">{{ $name }}</h4>
+    <div class="product-card__rating">
+      <span class="stars-full">{{ range seq $stars }}★{{ end }}</span>
+      {{ if gt $empty 0 }}<span class="stars-empty">{{ range seq $empty }}☆{{ end }}</span>{{ end }}
+    </div>
+    <div class="ranking-item__desc">{{ .Inner | markdownify }}</div>
+    {{ if $url }}
+    <a href="{{ $url }}" class="affiliate-btn affiliate-btn--orange" target="_blank" rel="nofollow noopener noreferrer">
+      {{ $btntext }}
+    </a>
+    {{ end }}
+  </div>
+</div>

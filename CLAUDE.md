@@ -30,16 +30,95 @@ Cloudflare Pages (無料ホスティング)
 ### リポジトリ構成
 ```
 blog/
-├── .github/workflows/deploy.yml   # 自動デプロイ
-├── archetypes/default.md          # Hugo記事テンプレート
-├── content/posts/                 # 同期先（直接編集しない）
-├── templates/新規記事.md           # Obsidianテンプレート
-├── scripts/sync-posts.ps1         # ← 公開するときに実行するスクリプト
-├── static/                        # 画像などの静的ファイル
-├── themes/PaperMod/               # テーマ（要セットアップ）
-├── hugo.toml                      # Hugo設定
-└── CLAUDE.md                      # このファイル
+├── .github/workflows/deploy.yml      # 自動デプロイ
+├── archetypes/default.md             # Hugo記事テンプレート
+├── assets/css/extended/custom.css   # アフィリエイト向けカスタムCSS ✅
+├── content/posts/                    # 同期先（直接編集しない）
+├── layouts/shortcodes/               # ショートコード ✅
+│   ├── btn.html                      # アフィリエイトボタン
+│   ├── box.html                      # コンテンツボックス
+│   ├── card.html                     # 商品カード
+│   └── ranking.html                  # ランキング表示
+├── templates/新規記事.md              # Obsidianテンプレート
+├── scripts/sync-posts.ps1            # ← 公開するときに実行するスクリプト
+├── static/                           # 画像などの静的ファイル
+├── themes/PaperMod/                  # テーマ（セットアップ済み）✅
+├── hugo.toml                         # Hugo設定
+└── CLAUDE.md                         # このファイル
 ```
+
+## アフィリエイト向けショートコード ✅ 完了
+
+### ① アフィリエイトボタン
+```
+{{</* btn url="https://..." text="無料で試す" color="orange" */>}}
+```
+color: `orange` / `amazon` / `blue` / `green` / `red` / `purple`
+
+### ② 商品カード
+```
+{{</* card name="ツール名" stars="5" price="月額3,000円" url="https://..." */>}}
+特徴の説明文
+{{</* /card */>}}
+```
+
+### ③ コンテンツボックス
+```
+{{</* box type="good" title="タイトル" */>}}
+内容
+{{</* /box */>}}
+```
+type: `info`💡 / `warn`⚠️ / `good`✅ / `bad`❌ / `point`📌 / `memo`📝
+
+### ④ ランキング
+```
+{{</* ranking rank="1" name="ツール名" stars="5" url="https://..." */>}}
+説明文
+{{</* /ranking */>}}
+```
+
+## AI記事自動生成パイプライン ✅ 完了
+
+### 使い方
+
+#### 初回セットアップ（1回だけ実行）
+```powershell
+# 1. Pythonライブラリをインストール
+pip install -r C:\projects\blog\scripts\requirements.txt
+
+# 2. Anthropic APIキーを設定
+#    https://console.anthropic.com/ でAPIキーを取得してから:
+$env:ANTHROPIC_API_KEY = "sk-ant-ここにAPIキーを貼り付ける"
+```
+
+#### 記事を自動生成する
+```powershell
+cd C:\projects\blog
+python scripts/generate-article.py "ChatGPT 使い方 初心者"
+```
+
+#### 生成後の流れ
+1. `C:\obsidian-vault\blog\posts\` に下書きが保存される
+2. Obsidianで記事を確認・編集する
+3. フロントマターの `draft: true` → `draft: false` に変更
+4. `C:\projects\blog\scripts\sync-posts.ps1` を実行して公開
+
+### スクリプト構成
+```
+scripts/
+├── generate-article.py   # AI記事生成メインスクリプト
+├── requirements.txt      # Python依存ライブラリ（anthropic）
+├── .env.example          # APIキー設定例
+└── sync-posts.ps1        # 記事公開スクリプト
+```
+
+### 使用モデル
+- `claude-sonnet-4-6`（速度と品質のバランス）
+- 変更する場合は `generate-article.py` の `MODEL` を編集
+
+## 次の実装予定
+
+- [ ] アフィリエイト: もしもアフィリエイト（初心者向けで最もおすすめ）への登録
 
 ### 使用技術
 - **エディタ**: Obsidian
@@ -61,20 +140,10 @@ git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git t
 git submodule update --init --recursive
 ```
 
-### 3. Cloudflare Pages の設定 ← 次はここから
-**現在地**: Cloudflare の画面で Workers ページが表示された状態
-**次の操作**: 画面下部の「Pages のデプロイをお考えですか？さあ始めましょう」をクリック
-
-手順:
-1. 「GitHubに接続」をクリック
-2. GitHubリポジトリ `kiboindigolabs-commits/blog` を選択
-3. ビルド設定:
-   - フレームワーク: Hugo
-   - ビルドコマンド: `hugo --minify`
-   - 出力ディレクトリ: `public`
-4. GitHub Secrets に追加:
-   - `CLOUDFLARE_API_TOKEN`
-   - `CLOUDFLARE_ACCOUNT_ID`
+### 3. Cloudflare Pages の設定 ✅ 完了
+- デプロイURL: `https://blog-19g.pages.dev`
+- GitHubリポジトリ `kiboindigolabs-commits/blog` の main ブランチに連携済み
+- ビルドコマンド: `hugo --minify` / 出力: `public`
 
 ### 4. Obsidian の設定
 1. Obsidianのボルトは `C:\obsidian-vault` を使用（変更不要）
