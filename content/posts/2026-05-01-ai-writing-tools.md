@@ -5,6 +5,9 @@ draft: false
 tags: ["AIツール", "ライティング", "ブログ運営"]
 categories: ["AIツール紹介"]
 description: "ブログ記事作成を効率化するAIライティングツールを厳選して紹介。初心者でもすぐ使えるおすすめツールを比較します。"
+cover:
+  image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&h=400&fit=crop"
+  alt: "AIライティングツール"
 ---
 
 ブログ記事の作成に時間がかかって困っていませんか？
