@@ -1,8 +1,8 @@
 # Claude Code メモリ
 
 ## セッション情報
-- セッションURL: https://claude.ai/code/session_01Lzu36ZhTa1CGkWxSx5vQEJ
-- 日付: 2026-04-25 〜 2026-05-01
+- セッションURL: https://claude.ai/code/session_01GmL2zRdXn6AtkX1SabLu9p
+- 日付: 2026-04-25 〜 2026-05-07
 
 ## ブログシステム構成
 
@@ -33,12 +33,24 @@ blog/
 ├── .github/workflows/deploy.yml      # 自動デプロイ
 ├── archetypes/default.md             # Hugo記事テンプレート
 ├── assets/css/extended/custom.css   # アフィリエイト向けカスタムCSS ✅
-├── content/posts/                    # 同期先（直接編集しない）
-├── layouts/shortcodes/               # ショートコード ✅
-│   ├── btn.html                      # アフィリエイトボタン
-│   ├── box.html                      # コンテンツボックス
-│   ├── card.html                     # 商品カード
-│   └── ranking.html                  # ランキング表示
+├── content/
+│   ├── posts/                        # 記事（直接編集しない）
+│   ├── about.md                      # Aboutページ ✅
+│   ├── archives.md                   # アーカイブページ ✅
+│   ├── contact.md                    # お問い合わせ（Formspree連携済み）✅
+│   ├── disclaimer.md                 # 免責事項 ✅
+│   ├── privacy.md                    # プライバシーポリシー ✅
+│   └── search.md                     # 検索ページ（Fuse.js）✅
+├── layouts/
+│   ├── 404.html                      # カスタム404ページ ✅
+│   ├── partials/
+│   │   ├── extend_head.html          # ファビコン・フォント
+│   │   └── extend_footer.html        # フッターナビゲーション ✅
+│   └── shortcodes/                   # ショートコード ✅
+│       ├── btn.html
+│       ├── box.html
+│       ├── card.html
+│       └── ranking.html
 ├── templates/新規記事.md              # Obsidianテンプレート
 ├── scripts/sync-posts.ps1            # ← 公開するときに実行するスクリプト
 ├── static/                           # 画像などの静的ファイル
@@ -116,9 +128,25 @@ scripts/
 - `claude-sonnet-4-6`（速度と品質のバランス）
 - 変更する場合は `generate-article.py` の `MODEL` を編集
 
+## ブログ基本要素 ✅ 完了（2026-05-07）
+
+| ページ | URL | 状態 |
+|--------|-----|------|
+| 検索 | `/search/` | ✅ Fuse.js全文検索 |
+| アーカイブ | `/archives/` | ✅ 月別記事一覧 |
+| About | `/about/` | ✅ ブログ紹介 |
+| プライバシーポリシー | `/privacy/` | ✅ |
+| 免責事項 | `/disclaimer/` | ✅ |
+| お問い合わせ | `/contact/` | ✅ Formspree（ID: xbdwknjn）|
+| 404ページ | - | ✅ カスタムデザイン |
+| ファビコン | - | ✅ 🤖絵文字SVG |
+| フッターナビ | - | ✅ 全重要ページへのリンク |
+
 ## 次の実装予定
 
 - [ ] アフィリエイト: もしもアフィリエイト（初心者向けで最もおすすめ）への登録
+- [ ] Google Analytics の設定（hugo.toml に gtag を追加）
+- [ ] OGP用デフォルト画像の作成（static/images/og-default.png）
 
 ### 使用技術
 - **エディタ**: Obsidian
