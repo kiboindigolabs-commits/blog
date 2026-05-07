@@ -1,0 +1,20 @@
+{{- define "main" }}
+<div style="text-align:center; padding: 4rem 1rem; max-width: 600px; margin: 0 auto;">
+  <div style="font-size: 6rem; line-height: 1; margin-bottom: 1rem;">🤖</div>
+  <h1 style="font-size: 2rem; margin-bottom: .5rem;">404 — ページが見つかりません</h1>
+  <p style="color: var(--secondary, #6b7280); margin-bottom: 2rem;">
+    お探しのページは存在しないか、移動・削除された可能性があります。
+  </p>
+  <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+    <a href="/" style="background:#ff6b35; color:#fff; padding:.6rem 1.5rem; border-radius:.375rem; text-decoration:none; font-weight:600;">
+      トップページへ
+    </a>
+    <a href="/posts/" style="background:transparent; color:#ff6b35; padding:.6rem 1.5rem; border-radius:.375rem; border:2px solid #ff6b35; text-decoration:none; font-weight:600;">
+      記事一覧を見る
+    </a>
+    <a href="/search/" style="background:transparent; color:var(--secondary,#6b7280); padding:.6rem 1.5rem; border-radius:.375rem; border:1px solid var(--border,#e5e7eb); text-decoration:none; font-weight:600;">
+      記事を検索する
+    </a>
+  </div>
+</div>
+{{- end }}
