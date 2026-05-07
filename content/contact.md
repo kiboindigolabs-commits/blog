@@ -17,7 +17,7 @@ ShowShareButtons: false
 
 <div style="max-width: 600px; margin: 2rem 0;">
 
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:flex; flex-direction:column; gap:1rem;">
+<form action="https://formspree.io/f/xbdwknjn" method="POST" style="display:flex; flex-direction:column; gap:1rem;">
   <div>
     <label for="name" style="display:block; margin-bottom:.4rem; font-weight:600;">お名前 <span style="color:#e53e3e;">*</span></label>
     <input type="text" id="name" name="name" required placeholder="山田 太郎"
