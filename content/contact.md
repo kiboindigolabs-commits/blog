@@ -49,7 +49,6 @@ ShowShareButtons: false
 
 </div>
 
-> **注意:** フォームを使うには [Formspree](https://formspree.io/) に無料登録し、`YOUR_FORM_ID` を実際のフォームIDに置き換えてください。
 
 ---
 
