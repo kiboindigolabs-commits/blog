@@ -4,6 +4,7 @@
 {{ $stars := int (.Get "stars" | default "4") }}
 {{ $empty := sub 5 $stars }}
 {{ $btntext := .Get "btntext" | default "詳細を見る" }}
+{{ $btncolor := .Get "btncolor" | default "orange" }}
 <div class="ranking-item">
   <div class="ranking-item__number ranking-item__number--{{ $rank }}">{{ $rank }}</div>
   <div class="ranking-item__body">
@@ -14,7 +15,7 @@
     </div>
     <div class="ranking-item__desc">{{ .Inner | markdownify }}</div>
     {{ if $url }}
-    <a href="{{ $url }}" class="affiliate-btn affiliate-btn--orange" target="_blank" rel="nofollow noopener noreferrer">
+    <a href="{{ $url }}" class="affiliate-btn affiliate-btn--{{ $btncolor }}" target="_blank" rel="nofollow noopener noreferrer">
       {{ $btntext }}
     </a>
     {{ end }}
