@@ -321,6 +321,7 @@ article.home-info .entry-content p {
 .affiliate-btn--green   { background: linear-gradient(135deg, #22c55e, #16a34a); }
 .affiliate-btn--red     { background: linear-gradient(135deg, #ef4444, #dc2626); }
 .affiliate-btn--purple  { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.affiliate-btn--moshimo { background: linear-gradient(135deg, #e8392a, #c0271a); }
 
 /* ===== 商品カード ===== */
 .product-card {
