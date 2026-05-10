@@ -1,7 +1,7 @@
 ---
 title: "Perplexity AIとは？使い方と特徴をわかりやすく解説【2026年版】"
 date: 2026-05-15
-draft: true
+draft: false
 tags: ["Perplexity", "AI検索", "使い方", "ChatGPT代替"]
 categories: ["AI活用"]
 description: "Perplexity AIの使い方・特徴・料金をわかりやすく解説。ChatGPTとの違いや、情報収集・リサーチに強い理由も紹介します。"

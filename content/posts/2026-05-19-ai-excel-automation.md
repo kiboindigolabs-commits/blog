@@ -1,7 +1,7 @@
 ---
 title: "AIでExcel・スプレッドシートを自動化する方法【2026年版】初心者でもできる"
 date: 2026-05-19
-draft: true
+draft: false
 tags: ["Excel", "AI", "自動化", "Google スプレッドシート", "業務効率化"]
 categories: ["業務効率化"]
 description: "ChatGPTやClaude、Geminiを使ってExcelやGoogleスプレッドシートの作業を自動化する方法を初心者向けに解説します。"

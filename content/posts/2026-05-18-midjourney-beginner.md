@@ -1,7 +1,7 @@
 ---
 title: "Midjourney入門ガイド【2026年版】登録から画像生成まで初心者向けに解説"
 date: 2026-05-18
-draft: true
+draft: false
 tags: ["Midjourney", "AI画像生成", "Discord", "使い方", "初心者"]
 categories: ["AI活用"]
 description: "Midjourneyの登録方法・使い方・プロンプトの書き方を初心者向けに解説。Discordで始めるAI画像生成の完全ガイド2026年版。"

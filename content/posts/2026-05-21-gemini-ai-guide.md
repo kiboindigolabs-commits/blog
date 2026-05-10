@@ -1,7 +1,7 @@
 ---
 title: "Google Geminiとは？使い方・料金・ChatGPTとの違いをわかりやすく解説"
 date: 2026-05-21
-draft: true
+draft: false
 tags: ["Gemini", "Google AI", "ChatGPT比較", "無料", "使い方"]
 categories: ["AI活用"]
 description: "GoogleのAI「Gemini」の使い方・料金・ChatGPTとの違いを初心者向けに解説。Googleサービスとの連携でできることも紹介します。"

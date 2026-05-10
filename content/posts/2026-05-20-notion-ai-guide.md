@@ -1,7 +1,7 @@
 ---
 title: "Notion AI完全ガイド【2026年版】使い方・料金・活用術を初心者向けに解説"
 date: 2026-05-20
-draft: true
+draft: false
 tags: ["Notion", "Notion AI", "メモ", "タスク管理", "AI"]
 categories: ["業務効率化"]
 description: "NotionのAI機能の使い方・料金・おすすめ活用術を初心者向けに解説。文章作成・要約・データベース整理など実践的な使い方を紹介します。"

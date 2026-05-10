@@ -1,7 +1,7 @@
 ---
 title: "ChatGPT完全入門：登録から使い方まで初心者にわかりやすく解説"
 date: 2026-05-01
-draft: true
+draft: false
 tags: ["ChatGPT", "AI入門", "使い方"]
 categories: ["AI活用"]
 description: "ChatGPTの登録方法から基本的な使い方まで、AIが初めての方にもわかりやすく丁寧に解説します。"

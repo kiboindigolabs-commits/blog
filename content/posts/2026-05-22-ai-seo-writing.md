@@ -1,7 +1,7 @@
 ---
 title: "AIでSEO記事を書く方法【2026年版】ChatGPTとClaudeを使ったブログ執筆術"
 date: 2026-05-22
-draft: true
+draft: false
 tags: ["SEO", "AI", "ブログ", "記事作成", "ChatGPT"]
 categories: ["AI活用"]
 description: "ChatGPTやClaudeを使ってSEOに強いブログ記事を書く方法を解説。キーワード選定から構成・本文作成まで、AI活用ライティングの実践ガイドです。"

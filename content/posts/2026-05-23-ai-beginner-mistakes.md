@@ -1,7 +1,7 @@
 ---
 title: "AI初心者がやりがちな失敗5選と正しい使い方【ChatGPT・Claude共通】"
 date: 2026-05-23
-draft: true
+draft: false
 tags: ["AI初心者", "ChatGPT", "失敗", "使い方", "ハルシネーション"]
 categories: ["AI活用"]
 description: "AI初心者がよくやる失敗と、その解決策を解説。ハルシネーション・丸投げ・情報漏洩リスクなど、知っておくべき注意点をまとめました。"

@@ -1,7 +1,7 @@
 ---
 title: "LLMとは何か？大規模言語モデルをわかりやすく解説"
 date: 2026-05-05
-draft: true
+draft: false
 tags: ["LLM", "AI基礎", "大規模言語モデル"]
 categories: ["AI活用"]
 description: "LLM（大規模言語モデル）とは何か、難しい専門用語を使わずに、ChatGPTやClaudeがどのように動いているかをわかりやすく解説します。"

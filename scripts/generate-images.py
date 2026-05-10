@@ -15,49 +15,48 @@ STATIC = Path(__file__).parent.parent / "static"
 STATIC.mkdir(exist_ok=True)
 (STATIC / "images").mkdir(exist_ok=True)
 
-# カラー定義
-INDIGO   = (99, 102, 241)    # #6366f1
-VIOLET   = (139, 92, 246)    # #8b5cf6
-WHITE    = (255, 255, 255)
-LIGHT    = (199, 210, 254)   # #c7d2fe
-BG_LIGHT = (238, 242, 255)   # 薄いインディゴ背景
-DARK     = (30, 27, 75)      # #1e1b4b
+# カラー定義（ブルー・シアン系）
+BLUE      = (14, 116, 220)    # #0e74dc メインブルー
+CYAN      = (6, 182, 212)     # #06b6d4 シアン
+DARK_BLUE = (7, 35, 90)       # #07235a 濃いネイビー
+WHITE     = (255, 255, 255)
+LIGHT_C   = (186, 230, 253)   # #bae6fd 薄いシアン
+BG_LIGHT  = (240, 249, 255)   # #f0f9ff 薄い水色背景
 
 
 def draw_robot(draw: ImageDraw.Draw, ox: int, oy: int, size: int):
-    """シンプルなロボットアイコンを描画"""
-    s = size / 32  # スケール係数
+    """シンプルなロボットアイコンを描画（ブルー・シアン系）"""
+    s = size / 32
 
-    def r(x, y, w, h, radius=0, fill=INDIGO):
+    def r(x, y, w, h, radius=0, fill=BLUE):
         draw.rounded_rectangle(
             [ox + x * s, oy + y * s, ox + (x + w) * s, oy + (y + h) * s],
             radius=radius * s, fill=fill
         )
 
-    def c(x, y, radius, fill=INDIGO):
+    def c(x, y, radius, fill=BLUE):
         draw.ellipse(
             [ox + (x - radius) * s, oy + (y - radius) * s,
              ox + (x + radius) * s, oy + (y + radius) * s],
             fill=fill
         )
 
-    # Body
-    r(2, 9, 28, 22, 6, INDIGO)
-    # Gradient overlay on body (lighter top)
-    r(2, 9, 28, 11, 6, VIOLET)
+    # Body（グラデーション風：上がシアン、下がブルー）
+    r(2, 9, 28, 22, 6, BLUE)
+    r(2, 9, 28, 10, 6, CYAN)
 
     # Antenna
-    r(13, 2, 6, 9, 3, INDIGO)
-    c(16, 3, 3, LIGHT)
+    r(13, 2, 6, 9, 3, DARK_BLUE)
+    c(16, 3, 3, LIGHT_C)
 
     # Eyes (white boxes)
     r(6, 17, 7, 6, 2, WHITE)
     r(19, 17, 7, 6, 2, WHITE)
-    # Pupils
-    c(9.5, 20, 2, INDIGO)
-    c(22.5, 20, 2, INDIGO)
+    # Pupils（シアン）
+    c(9.5, 20, 2, CYAN)
+    c(22.5, 20, 2, CYAN)
 
-    # Mouth
+    # Mouth（白）
     r(9, 27, 14, 3, 1.5, (255, 255, 255, 215))
 
 
@@ -74,41 +73,60 @@ def make_og_image(path: Path):
     img = Image.new("RGB", (W, H), BG_LIGHT)
     draw = ImageDraw.Draw(img)
 
-    # 背景グラデーション風の帯
+    # 左サイドバー（ブルー→シアン グラデーション風）
     for y in range(H):
         ratio = y / H
-        r = int(INDIGO[0] * (1 - ratio) + VIOLET[0] * ratio)
-        g = int(INDIGO[1] * (1 - ratio) + VIOLET[1] * ratio)
-        b = int(INDIGO[2] * (1 - ratio) + VIOLET[2] * ratio)
-        draw.line([(0, y), (420, y)], fill=(r, g, b))
+        r = int(DARK_BLUE[0] * (1 - ratio) + BLUE[0] * ratio)
+        g = int(DARK_BLUE[1] * (1 - ratio) + BLUE[1] * ratio)
+        b = int(DARK_BLUE[2] * (1 - ratio) + BLUE[2] * ratio)
+        draw.line([(0, y), (400, y)], fill=(r, g, b))
 
-    # 右側は薄いインディゴ
-    draw.rectangle([420, 0, W, H], fill=BG_LIGHT)
+    # 右エリア（薄い水色）
+    draw.rectangle([400, 0, W, H], fill=BG_LIGHT)
 
-    # ロボットアイコン（左側白エリア）
-    robot_size = 200
-    draw_robot(draw, 110, 215, robot_size)
+    # 装飾：右エリアに薄いシアンの丸
+    draw.ellipse([900, -80, 1280, 300], fill=(224, 247, 253))
+    draw.ellipse([350, 400, 700, 750], fill=(219, 243, 252))
 
-    # テキスト（右エリア）
+    # ロボットアイコン（左サイドバー中央）
+    robot_size = 180
+    draw_robot(draw, 110, 225, robot_size)
+
+    # サイト名テキスト（左）
     try:
-        font_title = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 72)
-        font_sub   = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 36)
-        font_tag   = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 28)
+        font_title  = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 76)
+        font_sub    = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 34)
+        font_tag    = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 26)
+        font_catch  = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 30)
     except Exception:
-        font_title = ImageFont.load_default()
-        font_sub   = font_title
-        font_tag   = font_title
+        font_title = font_sub = font_tag = font_catch = ImageFont.load_default()
 
-    # タイトル
-    draw.text((460, 200), "AI Tools Lab", font=font_title, fill=DARK)
+    # メインタイトル（右エリア）
+    draw.text((440, 160), "AI Tools Lab", font=font_title, fill=DARK_BLUE)
+
+    # 区切り線
+    draw.rectangle([440, 260, 1100, 265], fill=CYAN)
+
     # サブタイトル
-    draw.text((462, 300), "AIツールの最新情報・使い方・", font=font_sub, fill=(80, 80, 120))
-    draw.text((462, 345), "おすすめをわかりやすく紹介", font=font_sub, fill=(80, 80, 120))
-    # タグライン
-    draw.text((462, 430), "ChatGPT / Claude / Gemini / Midjourney", font=font_tag, fill=INDIGO)
+    draw.text((444, 285), "AIツールの最新情報・使い方・", font=font_sub, fill=(30, 60, 120))
+    draw.text((444, 328), "おすすめをわかりやすく紹介", font=font_sub, fill=(30, 60, 120))
 
-    # 下部バー
-    draw.rectangle([0, H - 8, W, H], fill=INDIGO)
+    # キャッチコピー
+    draw.text((444, 400), "初心者にもわかりやすく、すぐに使える情報をお届け", font=font_catch, fill=BLUE)
+
+    # タグ
+    tags = ["ChatGPT", "Claude", "Gemini", "Midjourney", "AI活用"]
+    tx = 444
+    for tag in tags:
+        bbox = draw.textbbox((0, 0), tag, font=font_tag)
+        tw = bbox[2] - bbox[0] + 24
+        draw.rounded_rectangle([tx, 465, tx + tw, 500], radius=6, fill=CYAN)
+        draw.text((tx + 12, 468), tag, font=font_tag, fill=WHITE)
+        tx += tw + 10
+
+    # 下部バー（ブルー）
+    draw.rectangle([0, H - 10, W, H], fill=BLUE)
+    draw.rectangle([0, H - 10, 400, H], fill=DARK_BLUE)
 
     img.save(path, "PNG")
     print(f"  作成: {path.name} ({W}x{H})")

@@ -1,7 +1,7 @@
 ---
 title: "【2026年】AI議事録ツール比較4選｜会議を自動で要約・テキスト化する方法"
 date: 2026-05-14
-draft: true
+draft: false
 tags: ["議事録", "AI", "Zoom", "Teams", "会議効率化"]
 categories: ["業務効率化"]
 description: "ZoomやTeamsの会議を自動で録音・文字起こし・要約するAI議事録ツール4選を比較。無料から使えるおすすめサービスを紹介します。"

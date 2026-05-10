@@ -1,7 +1,7 @@
 ---
 title: "【2026年最新】AI文字起こしツール比較5選｜会議・音声を自動でテキスト化"
 date: 2026-05-12
-draft: true
+draft: false
 tags: ["文字起こし", "AI", "議事録", "音声認識", "時短"]
 categories: ["業務効率化"]
 description: "会議や音声をAIが自動でテキスト化するおすすめツールを徹底比較。Notta・Whisper・Otter.aiなど5選を機能・料金・精度で評価します。"
