@@ -4,6 +4,7 @@ defaultContentLanguage = "ja"
 title = "AI Tools Lab"
 theme = "PaperMod"
 enableRobotsTXT = true
+enableGitInfo = true
 buildDrafts = false
 buildFuture = false
 
@@ -41,6 +42,15 @@ buildFuture = false
 
   [params.logo]
     logoText = "🤖 AI Tools Lab"
+
+  # Google Search Console の確認タグ
+  # https://search.google.com/search-console でコードを取得してここに貼り付ける
+  [params.analytics.google]
+    SiteVerificationTag = ""
+
+  # Schema.org 設定
+  [params.schema]
+    publisherType = "Organization"
 
   [params.homeInfoParams]
     Title = "AIツールをもっと身近に 🤖"

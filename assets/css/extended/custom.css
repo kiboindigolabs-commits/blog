@@ -733,3 +733,50 @@ article.home-info .entry-content p {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== パンくずリスト ===== */
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.25rem;
+  font-size: 0.8rem;
+  color: var(--text-muted, #6b7280);
+  margin-bottom: 1rem;
+  padding: 0.5rem 0.9rem;
+  background: var(--bg-soft, #f9fafb);
+  border-radius: 8px;
+  border: 1px solid var(--border, #e5e7eb);
+}
+
+.breadcrumbs a {
+  color: var(--primary, #6366f1);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.breadcrumbs a:hover {
+  color: var(--primary-dark, #4f46e5);
+  text-decoration: underline;
+}
+
+.breadcrumb-sep {
+  color: #d1d5db;
+  font-size: 0.9rem;
+  margin: 0 0.15rem;
+}
+
+.breadcrumb-current {
+  color: var(--text-muted, #6b7280);
+  font-weight: 500;
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .breadcrumb-current {
+    max-width: 160px;
+  }
+}
