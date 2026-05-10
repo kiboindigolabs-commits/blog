@@ -19,7 +19,7 @@ buildFuture = false
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
-  ShowShareButtons = true
+  ShowShareButtons = false
   ShowToc = true
   TocOpen = true
   ShowCoverImageInList = true
@@ -46,9 +46,6 @@ buildFuture = false
     Title = "AIツールをもっと身近に 🤖"
     Content = "最新のAIツール情報・使い方・おすすめを、初心者にもわかりやすく紹介します。気になる記事はカテゴリやタグから探してみてください。"
 
-  [[params.socialIcons]]
-    name = "twitter"
-    url  = "https://twitter.com/"
   [[params.socialIcons]]
     name = "rss"
     url  = "/index.xml"

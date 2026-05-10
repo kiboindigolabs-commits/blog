@@ -1,0 +1,22 @@
+{{- $related := .Site.RegularPages.Related . | first 4 }}
+{{- if $related }}
+<section class="related-posts">
+  <h2 class="related-posts-title">関連記事</h2>
+  <div class="related-posts-grid">
+    {{- range $related }}
+    <a href="{{ .Permalink }}" class="related-post-card">
+      <div class="related-post-meta">
+        {{- with .Params.categories }}
+        <span class="related-post-cat">{{ index . 0 }}</span>
+        {{- end }}
+        <span class="related-post-date">{{ .Date.Format "2006年01月02日" }}</span>
+      </div>
+      <h3 class="related-post-title">{{ .Title }}</h3>
+      {{- with .Description }}
+      <p class="related-post-desc">{{ . | truncate 80 }}</p>
+      {{- end }}
+    </a>
+    {{- end }}
+  </div>
+</section>
+{{- end }}

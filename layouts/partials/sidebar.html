@@ -1,0 +1,55 @@
+<aside class="sidebar">
+
+  {{/* ===== 著者紹介 ===== */}}
+  <div class="sidebar-widget widget-author">
+    <div class="widget-author-avatar">
+      <img src="/images/logo.svg" alt="AI Tools Lab" width="64" height="64" />
+    </div>
+    <div class="widget-author-name">AI Tools Lab 編集部</div>
+    <p class="widget-author-bio">
+      AIツールの最新情報・使い方・おすすめを初心者にもわかりやすく紹介。ChatGPT・Claude・Geminiなど、すぐに使える情報をお届けします。
+    </p>
+  </div>
+
+  {{/* ===== 注目の記事 ===== */}}
+  <div class="sidebar-widget widget-popular">
+    <h3 class="widget-title">注目の記事</h3>
+    <ul class="widget-post-list">
+      {{- $pages := where .Site.RegularPages "Type" "posts" }}
+      {{- range first 6 ($pages.ByDate.Reverse) }}
+      <li class="widget-post-item">
+        <a href="{{ .Permalink }}" class="widget-post-link">
+          <span class="widget-post-title">{{ .Title }}</span>
+          <span class="widget-post-date">{{ .Date.Format "01/02" }}</span>
+        </a>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+
+  {{/* ===== カテゴリ ===== */}}
+  <div class="sidebar-widget widget-categories">
+    <h3 class="widget-title">カテゴリ</h3>
+    <ul class="widget-category-list">
+      {{- range .Site.Taxonomies.categories.ByCount }}
+      <li>
+        <a href="{{ .Page.Permalink }}" class="widget-category-link">
+          <span class="widget-category-name">{{ .Page.Title }}</span>
+          <span class="widget-category-count">{{ .Count }}</span>
+        </a>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+
+  {{/* ===== タグクラウド ===== */}}
+  <div class="sidebar-widget widget-tags">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget-tag-cloud">
+      {{- range first 20 (.Site.Taxonomies.tags.ByCount) }}
+      <a href="{{ .Page.Permalink }}" class="widget-tag">{{ .Page.Title }}</a>
+      {{- end }}
+    </div>
+  </div>
+
+</aside>
