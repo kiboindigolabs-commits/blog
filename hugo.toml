@@ -46,7 +46,7 @@ buildFuture = false
   # Google Search Console の確認タグ
   # https://search.google.com/search-console でコードを取得してここに貼り付ける
   [params.analytics.google]
-    SiteVerificationTag = ""
+    SiteVerificationTag = "JRFAdtNT-6eWrdVqVKPu509qpxgPHNGwVaKG-xMCgfc"
 
   # Schema.org 設定
   [params.schema]
