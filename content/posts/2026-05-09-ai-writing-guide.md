@@ -1,7 +1,7 @@
 ---
 title: "AIライティング活用術：ブログ・SNS・メールを10倍速で書く方法"
 date: 2026-05-09
-draft: true
+draft: false
 tags: ["AIライティング", "ブログ", "文章作成"]
 categories: ["業務効率化"]
 description: "ChatGPTやClaudeを使って文章作成を劇的に効率化する方法を解説。ブログ記事・SNS投稿・ビジネスメールなど用途別のプロンプトも紹介します。"

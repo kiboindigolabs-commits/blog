@@ -19,8 +19,12 @@ import re
 from datetime import datetime
 from pathlib import Path
 
-# 設定
-VAULT_POSTS_PATH = Path(r"C:\obsidian-vault\blog\posts")
+# 保存先: Windowsは Obsidian Vault、Linux/Mac は Git リポジトリの content/posts/
+if os.name == "nt":
+    VAULT_POSTS_PATH = Path(r"C:\obsidian-vault\blog\posts")
+else:
+    VAULT_POSTS_PATH = Path(__file__).parent.parent / "content" / "posts"
+
 MODEL = "claude-sonnet-4-6"
 MAX_TOKENS = 4096
 

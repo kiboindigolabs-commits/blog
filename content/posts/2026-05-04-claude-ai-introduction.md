@@ -1,7 +1,7 @@
 ---
 title: "Claudeとは？ChatGPTとの違いと使い分け方を徹底解説"
 date: 2026-05-04
-draft: true
+draft: false
 tags: ["Claude", "ChatGPT", "AI比較"]
 categories: ["AI活用"]
 description: "AnthropicのAI「Claude」の特徴とChatGPTとの違いを解説。どちらを使うべきか、目的別の使い分け方も紹介します。"
