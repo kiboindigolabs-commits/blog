@@ -24,8 +24,11 @@ try:
 except ImportError:
     HAS_DDGS = False
 
-# 設定
-VAULT_IDEAS_PATH = Path(r"C:\obsidian-vault\blog\_ideas")
+# 保存先: Windowsは Obsidian Vault、Linux/Mac は Git リポジトリ内の _ideas/
+if os.name == "nt":
+    VAULT_IDEAS_PATH = Path(r"C:\obsidian-vault\blog\_ideas")
+else:
+    VAULT_IDEAS_PATH = Path(__file__).parent.parent / "_ideas"
 SEEN_URLS_FILE = VAULT_IDEAS_PATH / "99_Archive" / "seen_urls.json"
 MODEL = "claude-sonnet-4-6"
 ITEMS_PER_GENRE = 2  # 各ジャンルの取得件数
