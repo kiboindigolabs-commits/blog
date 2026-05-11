@@ -5,6 +5,10 @@ draft: true
 tags: []
 categories: []
 description: ""
+cover:
+  image: ""
+  alt: ""
+  relative: false
 ---
 
 ## はじめに

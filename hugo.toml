@@ -33,6 +33,7 @@ buildFuture = false
   author = "AI Tools Lab 編集部"
   keywords = ["AIツール", "ChatGPT", "Claude", "AI活用", "ブログ"]
   copyright = "© 2026 AI Tools Lab"
+  comments = true
 
   [params.assets]
     favicon          = "/favicon.svg"
