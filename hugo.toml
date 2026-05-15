@@ -43,7 +43,7 @@ buildFuture = false
     apple_touch_icon = "/apple-touch-icon.png"
 
   [params.logo]
-    logoText = "🤖 AI Tools Lab"
+    logoText = "✨ AI Tools Lab"
 
   # Google Search Console の確認タグ
   # https://search.google.com/search-console でコードを取得してここに貼り付ける
@@ -55,7 +55,7 @@ buildFuture = false
     publisherType = "Organization"
 
   [params.homeInfoParams]
-    Title = "AIツールをもっと身近に 🤖"
+    Title = "AIツールをもっと身近に ✨"
     Content = "最新のAIツール情報・使い方・おすすめを、初心者にもわかりやすく紹介します。気になる記事はカテゴリやタグから探してみてください。"
 
   [[params.socialIcons]]
