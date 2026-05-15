@@ -67,14 +67,72 @@ body {
 }
 
 /* ===== ホームページ ヒーロー ===== */
+@keyframes heroShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-8px) scale(1.02); }
+}
+
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%       { opacity: 0.9;  transform: scale(1.15); }
+}
+
 .first-entry.home-info,
 article.home-info {
-  background: linear-gradient(135deg, #0a5559 0%, #0d8a94 60%, #2dd4bf 100%) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background: linear-gradient(-45deg, #062e32, #0d8a94, #0a4a6e, #0b6e78, #062e32) !important;
+  background-size: 400% 400% !important;
+  animation: heroShift 12s ease infinite !important;
   border-radius: var(--radius) !important;
   padding: 3.5rem 2.5rem !important;
   margin-bottom: 2rem !important;
   border: none !important;
-  box-shadow: 0 8px 32px rgba(13,138,148,0.28) !important;
+  box-shadow: 0 8px 32px rgba(13,138,148,0.30) !important;
+}
+
+/* ニューラルネットワーク風パターンオーバーレイ */
+.first-entry.home-info::before,
+article.home-info::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: url('/images/hero-pattern.svg') !important;
+  background-size: 280px 280px !important;
+  opacity: 0.18 !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* グロー効果オーバーレイ */
+.first-entry.home-info::after,
+article.home-info::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(45,212,191,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 15%, rgba(99,179,237,0.15) 0%, transparent 45%),
+    radial-gradient(ellipse at 55% 50%, rgba(13,138,148,0.1) 0%, transparent 60%) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* テキストコンテンツは最前面 */
+.first-entry.home-info .entry-header,
+.first-entry.home-info .entry-content,
+.first-entry.home-info .entry-footer,
+article.home-info .entry-header,
+article.home-info .entry-content,
+article.home-info .entry-footer {
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 .first-entry.home-info .entry-header h1,
@@ -84,12 +142,14 @@ article.home-info .entry-header h1 {
   font-weight: 800 !important;
   letter-spacing: -0.02em;
   margin-bottom: 0.6rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.25);
 }
 
 .first-entry.home-info .entry-content p,
 article.home-info .entry-content p {
   color: rgba(255,255,255,0.88) !important;
   font-size: 1rem !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
 /* ===== 記事カード（横並び） ===== */
