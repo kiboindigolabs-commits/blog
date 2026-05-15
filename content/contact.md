@@ -9,7 +9,7 @@ ShowReadingTime: false
 ShowShareButtons: false
 ---
 
-当サイトへのお問い合わせは、下記フォームまたはTwitter（X）のDMからどうぞ。
+当サイトへのお問い合わせは、下記フォームからどうぞ。
 
 ---
 
@@ -49,14 +49,6 @@ ShowShareButtons: false
 
 </div>
 
-
----
-
-## Twitter（X）でのお問い合わせ
-
-急ぎのご連絡はTwitter（X）のDMでもお気軽にどうぞ。
-
-- Twitter: [@yourhandle](https://twitter.com/)
 
 ---
 
