@@ -188,12 +188,11 @@ cover:
 - Google Search Console 登録（reslabo.jp プロパティ、GSCタグ設定済み）
 - デザイン刷新（ティールカラー・横並びカード・シンプルヘッダー）
 - 記事メタ：日付のみ表示（読書時間・文字数・著者 非表示）
-- Utterances コメント欄（`kiboindigolabs-commits/blog` リポジトリ）
+- Utterances コメント欄（`kiboindigolabs-commits/blog` リポジトリ）✅ インストール済み
 - 記事 24本公開済み
+- もしもアフィリエイト再申請済み（`reslabo.jp` で申請、審査待ち）
 
 ### ユーザー操作が必要なもの
-- **もしもアフィリエイト再申請**：`https://www.moshimo.com/` で `reslabo.jp` で再申請
-- **Utterances 有効化**：https://github.com/apps/utterances を `kiboindigolabs-commits/blog` にインストール
 - **collect-ideas.py 初回テスト**：`python scripts/collect-ideas.py` で手動実行
 
 ### 代替ASP（もしも審査が通らない場合）
