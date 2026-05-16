@@ -190,7 +190,7 @@ cover:
 - 記事メタ：日付のみ表示（読書時間・文字数・著者 非表示）
 - Utterances コメント欄（`kiboindigolabs-commits/blog` リポジトリ）✅ インストール済み
 - 記事 24本公開済み
-- もしもアフィリエイト再申請済み（`reslabo.jp` で申請、審査待ち）
+- もしもアフィリエイト提携承認済み ✅（審査通過・リンク取得可能な状態）
 
 ### ユーザー操作が必要なもの
 - **collect-ideas.py 初回テスト**：`python scripts/collect-ideas.py` で手動実行
