@@ -104,3 +104,12 @@ Discordの「#newbies」チャンネルで：
 AI画像生成を始めるなら、品質の高さでMidjourneyは最有力候補です。まずは最安の$10プランから試してみましょう。
 
 {{< btn url="https://www.midjourney.com/" text="Midjourneyを始める" color="purple" >}}
+
+---
+
+## 国内サービスで始めたい方へ：ConoHa AI Canvas
+
+「Discordの設定が面倒」「海外サービスへのカード登録が不安」という方には、GMOが提供する国内AIクリエイティブサービス **ConoHa AI Canvas** も選択肢のひとつです。日本語でのサポートが受けられ、国内サービスならではの安心感があります。
+
+{{< btn url="https://af.moshimo.com/af/c/click?a_id=5571249&p_id=6331&pc_id=17865&pl_id=81480" text="ConoHa AI Canvas を試してみる" color="teal" >}}
+<img src="//i.moshimo.com/af/i/impression?a_id=5571249&p_id=6331&pc_id=17865&pl_id=81480" width="1" height="1" style="border:none;" loading="lazy">
