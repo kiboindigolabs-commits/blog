@@ -100,3 +100,12 @@ AIを仕事に取り入れるのは難しくありません。まず「面倒だ
 {{< box type="memo" title="今週の実践チャレンジ" >}}
 今週中に、普段1時間かかっている作業をAIに任せてみましょう。浮いた時間で何をするか、先に決めておくとモチベーションが上がります。
 {{< /box >}}
+
+---
+
+{{< box type="point" title="💡 プログラミングを覚えるとAI活用の幅がさらに広がる" >}}
+ExcelのマクロをAIに書いてもらったり、業務を自動化するスクリプトを作ったり——プログラミングの基礎があると、AIでできることが一気に広がります。**Skill Hacks** は副業・仕事効率化を目指す方が最短でプログラミングを習得できるサービスです。
+{{< /box >}}
+
+{{< btn url="https://af.moshimo.com/af/c/click?a_id=5571281&p_id=2402&pc_id=5229&pl_id=31484" text="Skill Hacksでスキルアップする" color="green" >}}
+<img src="//i.moshimo.com/af/i/impression?a_id=5571281&p_id=2402&pc_id=5229&pl_id=31484" width="1" height="1" style="border:none;" loading="lazy">
