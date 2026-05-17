@@ -142,3 +142,12 @@ AIエージェントとは何か、概要を教えてください。
 {{< box type="info" title="次のステップ" >}}
 この記事で紹介したテンプレートを使って、今日の仕事で1つ試してみてください。「なんか違う」と感じたら、条件を1つ追加して再送信するだけで改善できます。
 {{< /box >}}
+
+---
+
+{{< box type="point" title="📚 プロンプトをもっと深く学ぶなら" >}}
+プロンプトエンジニアリングは書籍で体系的に学ぶと理解が一気に深まります。実例が豊富な入門書から上級者向けの技術書まで、楽天市場で幅広く揃っています。
+{{< /box >}}
+
+{{< btn url="https://af.moshimo.com/af/c/click?a_id=5567964&p_id=54&pc_id=54&pl_id=622" text="楽天市場でプロンプト・AI活用本を探す" color="red" >}}
+<img src="//i.moshimo.com/af/i/impression?a_id=5567964&p_id=54&pc_id=54&pl_id=622" width="1" height="1" style="border:none;" loading="lazy">
