@@ -444,13 +444,13 @@ article.home-info .entry-content p {
   box-shadow: 0 8px 20px rgba(0,0,0,0.22);
 }
 
-.affiliate-btn--orange  { background: linear-gradient(135deg, #f97316, #ea580c); }
-.affiliate-btn--amazon  { background: linear-gradient(135deg, #f59e0b, #d97706); }
-.affiliate-btn--blue    { background: linear-gradient(135deg, #3b82f6, #2563eb); }
-.affiliate-btn--green   { background: linear-gradient(135deg, #22c55e, #16a34a); }
-.affiliate-btn--red     { background: linear-gradient(135deg, #ef4444, #dc2626); }
-.affiliate-btn--purple  { background: linear-gradient(135deg, #a855f7, #7c3aed); }
-.affiliate-btn--teal    { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+.affiliate-btn--orange  { background: linear-gradient(135deg, #fb923c, #ea580c); text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+.affiliate-btn--amazon  { background: linear-gradient(135deg, #fbbf24, #d97706); text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+.affiliate-btn--blue    { background: linear-gradient(135deg, #60a5fa, #2563eb); text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+.affiliate-btn--green   { background: linear-gradient(135deg, #4ade80, #16a34a); text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+.affiliate-btn--red     { background: linear-gradient(135deg, #f87171, #dc2626); text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+.affiliate-btn--purple  { background: linear-gradient(135deg, #c084fc, #7c3aed); text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+.affiliate-btn--teal    { background: linear-gradient(135deg, #2dd4bf, var(--primary-dark)); text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
 
 /* ===== 商品カード ===== */
 .product-card {
@@ -918,4 +918,86 @@ article.home-info .entry-content p {
   .breadcrumb-current {
     max-width: 160px;
   }
+}
+
+/* =============================================
+   コメントフォーム
+   ============================================= */
+.post-comments {
+  margin-top: 2.5rem;
+  padding: 1.75rem;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.comments-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+  color: var(--text);
+}
+
+.comments-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0 0 1.25rem;
+}
+
+.comment-form__group {
+  margin-bottom: 1rem;
+}
+
+.comment-form__group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+}
+
+.comment-form__group input,
+.comment-form__group textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  background: var(--bg-soft);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.comment-form__group input:focus,
+.comment-form__group textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-light);
+  background: #fff;
+}
+
+.comment-form__btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 2.2rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.comment-form__btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.comments-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0.75rem 0 0;
 }
