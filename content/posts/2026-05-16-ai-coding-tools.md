@@ -84,3 +84,12 @@ AWSが提供するAIコーディングアシスタント。AWS関連の開発に
 AIコーディングツールを使いこなすと、**単純なコード作成は9割AIに任せて、設計・レビューに集中できる**ようになります。まずは無料プランから試してみてください。
 
 {{< btn url="https://cursor.sh/" text="Cursorを無料で試す" color="blue" >}}
+
+---
+
+{{< box type="point" title="💡 AIと一緒にプログラミングを学ぶと効果が倍増" >}}
+AIコーディングツールは、プログラミングの基礎があるとさらに使いこなせます。「AIが生成したコードを読めない」「指示の出し方がわからない」という壁を乗り越えるには、基礎学習との組み合わせが効果的です。**Skill Hacks** は最短・最速でプログラミング初心者を卒業できるオンライン学習サービスです。
+{{< /box >}}
+
+{{< btn url="https://af.moshimo.com/af/c/click?a_id=5571281&p_id=2402&pc_id=5229&pl_id=31484" text="Skill Hacksでプログラミングを学ぶ" color="green" >}}
+<img src="//i.moshimo.com/af/i/impression?a_id=5571281&p_id=2402&pc_id=5229&pl_id=31484" width="1" height="1" style="border:none;" loading="lazy">
