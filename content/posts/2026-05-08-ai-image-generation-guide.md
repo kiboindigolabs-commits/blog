@@ -32,6 +32,7 @@ AI画像生成とは、テキスト（プロンプト）を入力するだけで
 | Stable Diffusion | 無料・高カスタマイズ性 | 無料（ローカル実行） |
 | Adobe Firefly | 商用利用に安心・Adobeと統合 | Adobe CCに付属 |
 | Canva AI | デザイン初心者向け・使いやすい | 無料〜 |
+| ConoHa AI Canvas | 国内サービス・日本語対応◎ | 要確認 |
 
 ## Midjourney の基本的な使い方
 
@@ -127,3 +128,16 @@ AI画像生成は、デザインのプロでなくても高品質なビジュア
 {{< box type="good" title="最初の一歩" >}}
 ChatGPT Plusのユーザーは今すぐ「〇〇の風景画像を作って」と送るだけ。まずは試してみてください！
 {{< /box >}}
+
+## 国内で使えるAI画像生成サービス「ConoHa AI Canvas」
+
+海外サービスに抵抗がある方や、日本語サポートを重視する方には、GMOが提供する国内サービスもおすすめです。**ConoHa AI Canvas** は日本語での操作・サポートに対応したAIクリエイティブツールで、国内サービスならではの安心感があります。
+
+{{< box type="point" title="ConoHa AI Canvas が向いている人" >}}
+- 海外サービスのアカウント登録・支払いが面倒に感じる方
+- 日本語サポートが充実したサービスを使いたい方
+- GMO・ConoHaサービスをすでに利用している方
+{{< /box >}}
+
+{{< btn url="https://af.moshimo.com/af/c/click?a_id=5571249&p_id=6331&pc_id=17865&pl_id=81480" text="ConoHa AI Canvas を試してみる" color="teal" >}}
+<img src="//i.moshimo.com/af/i/impression?a_id=5571249&p_id=6331&pc_id=17865&pl_id=81480" width="1" height="1" style="border:none;" loading="lazy">
