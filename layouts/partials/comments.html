@@ -1,12 +1,18 @@
-<section class="comments-section">
-  <h2 class="comments-title">コメント</h2>
-  <script
-    src="https://utteranc.es/client.js"
-    repo="kiboindigolabs-commits/blog"
-    issue-term="pathname"
-    label="💬 comment"
-    theme="github-light"
-    crossorigin="anonymous"
-    async>
-  </script>
+<section class="post-comments">
+  <h3 class="comments-heading">💬 コメント・ご感想</h3>
+  <p class="comments-desc">記事への感想・ご質問をお気軽にどうぞ。お名前はニックネームでも構いません。</p>
+  <form action="https://formspree.io/f/xbdwknjn" method="POST" class="comment-form">
+    <input type="hidden" name="_subject" value="記事コメント：{{ .Title }}">
+    <input type="hidden" name="page_url" value="{{ .Permalink }}">
+    <div class="comment-form__group">
+      <label for="c-name">お名前（ニックネームOK）</label>
+      <input type="text" id="c-name" name="name" placeholder="山田太郎" required>
+    </div>
+    <div class="comment-form__group">
+      <label for="c-msg">コメント</label>
+      <textarea id="c-msg" name="message" rows="4" placeholder="感想・質問など、お気軽にどうぞ" required></textarea>
+    </div>
+    <button type="submit" class="comment-form__btn">送信する</button>
+  </form>
+  <p class="comments-note">※ いただいたコメントは管理者が確認後、返信させていただく場合があります。</p>
 </section>
