@@ -131,3 +131,12 @@ AIツールの費用対効果を考えるときは、以下の視点で試算し
 4. **6ヶ月以内：** 全社展開の可否を判断し、本格導入計画を立てる
 
 AIの波は待ってくれません。競合より一歩先を行くためにも、小さな一歩を今日踏み出すことが重要です。
+
+---
+
+{{< box type="point" title="💡 プログラミング×AIで市場価値を高める" >}}
+AIを活用できる人材の需要は急増中です。ビジネスパーソンがプログラミングを習得すれば、業務自動化から新規事業立案まで、AIを武器に活躍の幅が一気に広がります。**DMM WEBCAMP** は転職保証付きスクールで、仕事をしながら学べるカリキュラムが充実しています。
+{{< /box >}}
+
+{{< btn url="https://af.moshimo.com/af/c/click?a_id=5571278&p_id=1363&pc_id=2297&pl_id=68018" text="DMM WEBCAMPの無料カウンセリングを受ける" color="blue" >}}
+<img src="//i.moshimo.com/af/i/impression?a_id=5571278&p_id=1363&pc_id=2297&pl_id=68018" width="1" height="1" style="border:none;" loading="lazy">
