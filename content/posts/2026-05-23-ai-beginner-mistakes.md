@@ -137,3 +137,12 @@ AIはあくまで「優秀なアシスタント」。最終的な判断・責任
 この5つを意識するだけで、AIの活用効果が大幅に上がります。失敗を恐れず、まず使ってみることが上達への近道です。
 
 {{< btn url="https://claude.ai/" text="Claudeを試してみる" color="blue" >}}
+
+---
+
+{{< box type="point" title="📚 AI活用を基礎から体系的に学ぶなら" >}}
+失敗を減らすには、基礎をしっかり押さえておくことが大切です。AI活用の入門書を一冊読んでおくと、使い方のコツや注意点が体系的に身につきます。楽天市場では初心者向けから実践的なものまで幅広く揃っています。
+{{< /box >}}
+
+{{< btn url="https://af.moshimo.com/af/c/click?a_id=5567964&p_id=54&pc_id=54&pl_id=622" text="楽天市場でAI活用書籍を探す" color="red" >}}
+<img src="//i.moshimo.com/af/i/impression?a_id=5567964&p_id=54&pc_id=54&pl_id=622" width="1" height="1" style="border:none;" loading="lazy">
