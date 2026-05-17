@@ -3,7 +3,7 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## セッション情報
-- 最終更新: 2026-05-15
+- 最終更新: 2026-05-17
 - 開発ブランチ: `claude/continue-previous-work-o1h7y`
 - **main ブランチは保護されている** → 必ず開発ブランチで作業し、GitHub MCP の `create_pull_request` + `merge_pull_request` でマージする
 
@@ -41,7 +41,7 @@ blog/
 │       ├── extend_head.html           # フォント・theme-color・読書進捗バー
 │       ├── sidebar.html               # 著者・注目記事・カテゴリ・タグ
 │       ├── related-posts.html         # 関連記事グリッド（4件）
-│       └── comments.html             # Utterances（GitHub Issues ベース）
+│       └── comments.html             # Formspreeシンプルフォーム（日本語）
 ├── layouts/shortcodes/               # アフィリエイト用ショートコード
 │   ├── btn.html                       # アフィリエイトボタン
 │   ├── box.html                       # コンテンツボックス
@@ -188,12 +188,23 @@ cover:
 - Google Search Console 登録（reslabo.jp プロパティ、GSCタグ設定済み）
 - デザイン刷新（ティールカラー・横並びカード・シンプルヘッダー）
 - 記事メタ：日付のみ表示（読書時間・文字数・著者 非表示）
-- Utterances コメント欄（`kiboindigolabs-commits/blog` リポジトリ）✅ インストール済み
+- ヒーローセクション背景：ニューラルネット風SVG + 12秒グラデーションアニメーション
+- コメント欄：Utterances → Formspree日本語シンプルフォームに変更（エンドポイント: `xbdwknjn`）
+- ボタン色調整：グラデーション＋text-shadowで視認性改善
+- モバイルレイアウト修正：ヘッダー・コンテンツのズレを `overflow-x:hidden` + padding統一で修正
 - 記事 24本公開済み
 - もしもアフィリエイト提携承認済み ✅（審査通過・リンク取得可能な状態）
+- アフィリエイトリンク追加済み：
+  - 楽天市場書籍（`a_id=5567964`）: chatgpt-beginner-guide, prompt-engineering-basics, llm-explained-easy, ai-beginner-mistakes
+  - ConoHa AI Canvas（`a_id=5571249`）: ai-image-generation-guide, ai-tools-ranking-2026, midjourney-beginner
+  - Skill Hacks（`a_id=5571281`）: ai-coding-tools, ai-work-efficiency, ai-free-tools-2026
+  - DMM WEBCAMP テキスト＋バナー（`a_id=5571278`, `pl_id=68018`）: ai-agent-introduction, generative-ai-for-business, chatgpt-plus-review
+- サイドバーにDMM WEBCAMP 300×250バナー追加（`pl_id=20505`）✅
+- generate-article.py: MAX_TOKENS 8192・記事目標4000〜6000字に拡張
 
 ### ユーザー操作が必要なもの
 - **collect-ideas.py 初回テスト**：`python scripts/collect-ideas.py` で手動実行
+- **モバイル表示確認**：reslabo.jp をスマホで確認してレイアウトのズレが解消されているか確認
 
 ### 代替ASP（もしも審査が通らない場合）
 | ASP | 特徴 |
